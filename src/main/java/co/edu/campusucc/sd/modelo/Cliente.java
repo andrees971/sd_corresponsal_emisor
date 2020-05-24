@@ -1,5 +1,5 @@
 package co.edu.campusucc.sd.modelo;
-// Generated 28/03/2020 03:58:47 PM by Hibernate Tools 5.4.7.Final
+// Generated 27/04/2020 11:48:23 AM by Hibernate Tools 5.4.7.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +16,6 @@ public class Cliente implements java.io.Serializable {
 	private String nombres;
 	private String apellidos;
 	private String razonSocial;
-	private String idGiro;
 	private Set ubicacions = new HashSet(0);
 	private Set biometrias = new HashSet(0);
 	private Set giros = new HashSet(0);
@@ -32,8 +31,7 @@ public class Cliente implements java.io.Serializable {
 	}
 
 	public Cliente(String idCliente, TipoCliente tipoCliente, TipoDocumento tipoDocumento, String idPais,
-			String nombres, String apellidos, String razonSocial, String idGiro, Set ubicacions, Set biometrias,
-			Set giros) {
+			String nombres, String apellidos, String razonSocial, Set ubicacions, Set biometrias, Set giros) {
 		this.idCliente = idCliente;
 		this.tipoCliente = tipoCliente;
 		this.tipoDocumento = tipoDocumento;
@@ -41,7 +39,6 @@ public class Cliente implements java.io.Serializable {
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.razonSocial = razonSocial;
-		this.idGiro = idGiro;
 		this.ubicacions = ubicacions;
 		this.biometrias = biometrias;
 		this.giros = giros;
@@ -101,14 +98,6 @@ public class Cliente implements java.io.Serializable {
 
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
-	}
-
-	public String getIdGiro() {
-		return this.idGiro;
-	}
-
-	public void setIdGiro(String idGiro) {
-		this.idGiro = idGiro;
 	}
 
 	public Set getUbicacions() {

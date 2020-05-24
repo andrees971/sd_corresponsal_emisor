@@ -1,5 +1,5 @@
 package co.edu.campusucc.sd.modelo;
-// Generated 28/03/2020 03:58:47 PM by Hibernate Tools 5.4.7.Final
+// Generated 27/04/2020 11:48:23 AM by Hibernate Tools 5.4.7.Final
 
 import java.util.HashSet;
 import java.util.Set;

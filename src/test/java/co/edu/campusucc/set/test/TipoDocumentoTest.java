@@ -15,8 +15,8 @@ class TipoDocumentoTest {
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
 		TipoDocumento td = new TipoDocumento();
 		
-		td.setIdTipoDocumento("1321");
-		td.setNombreDocumento("CC");
+		td.setIdTipoDocumento("1322");
+		td.setNombreDocumento("TI");
 		
 		try {
 			dao.persist(td);

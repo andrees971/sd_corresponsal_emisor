@@ -14,9 +14,9 @@ class PaisTest {
 		PaisDAO dao = new PaisDAO();
 		Pais pais= new Pais();
 		
-		pais.setIdPais("CO");
-		pais.setNombre("colombia");
-		pais.setGentilicio("colombiano");
+		pais.setIdPais("AR");
+		pais.setNombre("Argentina");
+		pais.setGentilicio("Argentinos");
 		
 	
 		try {

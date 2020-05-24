@@ -11,8 +11,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
+import org.hibernate.query.Query;
 
 import co.edu.campusucc.sd.modelo.FormaPago;
+import co.edu.campusucc.sd.modelo.Pais;
 
 /**
  * Home object for domain model class FormaPago.
@@ -55,6 +57,39 @@ public class FormaPagoDAO {
 		} finally {
 			session.close();
 		}
+	}
+	
+	public FormaPago consultar(String idFormaPago) {
+		logger.log(Level.INFO, "persisting Forma de pago instance");
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		FormaPago formaPago1 = new FormaPago(); 
+		try {
+			tx = session.beginTransaction();
+			Query consulta = session.createQuery("from FormaPago where idFormaPago =: idFormaPago");
+			consulta.setParameter("idFormaPago", idFormaPago);
+			
+			List<FormaPago> lisFormaPago = consulta.list();
+			for(FormaPago formaPago : lisFormaPago) {
+				System.out.println("id Forma de Pago: " + formaPago.getIdFormaPago());
+				System.out.println("nombre: " + formaPago.getNombre());
+				System.out.println("giro: " + formaPago.getGiro());
+				formaPago1.setIdFormaPago(formaPago.getIdFormaPago());
+				formaPago1.setNombre(formaPago.getNombre());
+				formaPago1.setGiro(formaPago.getGiro());
+			}
+			tx.commit();
+			logger.log(Level.INFO, "persist successful");
+		} catch (RuntimeException re) {
+			logger.log(Level.SEVERE, "persist failed", re);
+			if (tx != null)
+				tx.rollback();
+			throw re;
+
+		} finally {
+			session.close();
+		}
+		return formaPago1;
 	}
 
 	public void attachDirty(FormaPago instance) {

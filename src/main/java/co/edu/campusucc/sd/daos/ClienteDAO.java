@@ -11,7 +11,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
+import org.hibernate.query.Query;
 
+import co.edu.campusucc.sd.modelo.Biometria;
 import co.edu.campusucc.sd.modelo.Cliente;
 
 /**
@@ -51,6 +53,30 @@ public class ClienteDAO {
 			if (tx != null)
 				tx.rollback();
 			throw re;
+		} finally {
+			session.close();
+		}
+	}
+	
+	public void consultar(String idCliente) {
+		logger.log(Level.INFO, "persisting Cliente instance");
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query consulta = session.createQuery("from Cliente where idCliente =: idCliente");
+			consulta.setParameter("idCliente", idCliente);
+			List<Cliente> listCliente = consulta.list();
+			Cliente cliente= (Cliente)listCliente.get(0);
+			System.out.println(cliente);
+			tx.commit();
+			logger.log(Level.INFO, "persist successful");
+		} catch (RuntimeException re) {
+			logger.log(Level.SEVERE, "persist failed", re);
+			if (tx != null)
+				tx.rollback();
+			throw re;
+
 		} finally {
 			session.close();
 		}

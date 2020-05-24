@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 28/03/2020 03:58:48 PM by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/04/2020 11:48:25 AM by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class dynamic-insert="false" dynamic-update="false" mutable="true" name="co.edu.campusucc.sd.modelo.Cliente" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="cliente">
         <id name="idCliente" type="string">
@@ -23,9 +23,6 @@
         </property>
         <property generated="never" lazy="false" name="razonSocial" optimistic-lock="true" type="string" unique="false">
             <column length="30" name="razon_social" not-null="true"/>
-        </property>
-        <property generated="never" lazy="false" name="idGiro" optimistic-lock="true" type="string" unique="false">
-            <column length="5" name="id_giro"/>
         </property>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="ubicacions" optimistic-lock="true" sort="unsorted" table="ubicacion">
             <key on-delete="noaction">

@@ -11,8 +11,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
+import org.hibernate.query.Query;
 
 import co.edu.campusucc.sd.modelo.Biometria;
+import co.edu.campusucc.sd.modelo.Pais;
 
 /**
  * Home object for domain model class Biometria.
@@ -55,6 +57,49 @@ public class BiometriaDAO {
 			session.close();
 		}
 	}
+	
+	public void consultar(String idBiometria) {
+		logger.log(Level.INFO, "persisting biometria instance");
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Query consulta = session.createQuery("from Biometria where idBiometria =: idBiometria");
+			consulta.setParameter("idBiometria", idBiometria);
+			List<Biometria> listBiometria = consulta.list();
+			Biometria biometria= (Biometria) listBiometria.get(0);
+			tx.commit();
+			logger.log(Level.INFO, "persist successful");
+		} catch (RuntimeException re) {
+			logger.log(Level.SEVERE, "persist failed", re);
+			if (tx != null)
+				tx.rollback();
+			throw re;
+
+		} finally {
+			session.close();
+		}
+	}
+	
+	/*public void actualizar(Pais transientInstance) {
+		logger.log(Level.INFO, "actualizar Pais instance");
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(transientInstance);
+			tx.commit();
+			logger.log(Level.INFO, "actualizar successful");
+		} catch (RuntimeException re) {
+			logger.log(Level.SEVERE, "actualizar failed", re);
+			if (tx != null)
+				tx.rollback();
+			throw re;
+
+		} finally {
+			session.close();
+		}
+	}*/
 
 	public void attachDirty(Biometria instance) {
 		logger.log(Level.INFO, "attaching dirty Biometria instance");

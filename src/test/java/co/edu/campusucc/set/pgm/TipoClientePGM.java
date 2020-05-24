@@ -11,8 +11,8 @@ public class TipoClientePGM {
 		TipoClienteDAO dao = new TipoClienteDAO();
 		TipoCliente tpClient = new TipoCliente();
 		
-		tpClient.setIdTipoCliente("001");
-		tpClient.setNombre("natural");
+		tpClient.setIdTipoCliente("002");
+		tpClient.setNombre("juridico");
 
 		try {
 			// dao.delete(tpClient);

@@ -11,12 +11,12 @@ public class TipoDocumentoPGM {
 		TipoDocumentoDAO dao = new TipoDocumentoDAO();
 		TipoDocumento tpDocument = new TipoDocumento();
 		
-		tpDocument.setIdTipoDocumento("01");
-		tpDocument.setNombreDocumento("Cedula");
+		tpDocument.setIdTipoDocumento("02");
+		tpDocument.setNombreDocumento("pasaporte");
 
 		try {
-			 dao.delete(tpDocument);
-			// dao.persist(tpDocument);
+			 //dao.delete(tpDocument);
+			 dao.persist(tpDocument);
 			System.out.println("ok");
 		} catch (Exception e) {
 

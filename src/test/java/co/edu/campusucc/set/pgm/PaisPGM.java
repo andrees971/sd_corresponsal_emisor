@@ -12,15 +12,17 @@ class PaisPGM {
 		PaisDAO dao = new PaisDAO();
 		Pais pais = new Pais();
 
-		pais.setIdPais("fr");
-		pais.setNombre("francia");
-		pais.setGentilicio("frances");
+//		pais.setIdPais("fr");
+//		pais.setNombre("francia");
+//		pais.setGentilicio("frances");
 		
 
 		try {
-			//dao.delete(pais);
 			//dao.persist(pais);
-			System.out.println("ok");
+			//dao.delete(pais);
+			pais= dao.consultar("CO");
+			//dao.actualizar(pais);
+			System.out.println(pais.getNombre());
 		} catch (Exception e) {
 
 			System.out.println(e.toString()); // TODO
